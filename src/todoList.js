@@ -7,6 +7,7 @@ import { v4 as uuidv4 } from 'uuid'
 const List = () => {
 
     const [todoName, setTodoName] = useState('')
+    const [isButtonDisabled, setIsButtonDisabled] = useState(true);
     const dispatch = useDispatch()
     const inputRef = useRef(null);
 
@@ -15,6 +16,10 @@ const List = () => {
             inputRef.current.focus();
         }
     }, []);
+
+    useEffect(() => {
+        setIsButtonDisabled(todoName === '')
+    }, [todoName]);
 
     const handleClickAdd = () => {
         dispatch(addToDoAction({
@@ -64,7 +69,21 @@ const List = () => {
                     type="text"
                     placeholder="Add..."
                 />
-                <button onClick={handleClickAdd} className="b:none color:#fff font-weight:500 f:15px outline:none bg:blue r:5 ml:2px cursor:pointer p:8|10">Add</button>
+                {
+                    isButtonDisabled ?
+                        <button
+                            disabled={isButtonDisabled}
+                            onClick={handleClickAdd}
+                            className="b:none color:#fff transition:0.2s ease opacity:0.5 font-weight:500 f:15px outline:none bg:blue r:5 ml:4px p:8|10">
+                            Add
+                        </button> :
+                        <button
+                            disabled={isButtonDisabled}
+                            onClick={handleClickAdd}
+                            className="b:none color:#fff transition:0.2s ease opacity:0.5:hover font-weight:500 f:15px outline:none bg:blue r:5 ml:4px cursor:pointer p:8|10">
+                            Add
+                        </button>
+                }
             </div>
         </div>
     )
