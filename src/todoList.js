@@ -54,7 +54,7 @@ const List = () => {
             <ol className="m:0.5rem|0 p:5px|0|5px|1.3rem">
                 {todoList.map(todo => (
                     <li key={todo.id}>
-                        <span>{todo.name}</span>
+                        <span className="break-word">{todo.name}</span>
                         <button onClick={() => handleDelete(todo.id)} className="cursor:pointer opacity:0.35:hover p:4px|8px outline:none m:10px|5px color:#fff b:none r:5px bg:red"><MdDelete /></button>
                     </li>
                 ))}
