@@ -74,7 +74,7 @@ const List = () => {
                         <button
                             disabled={isButtonDisabled}
                             onClick={handleClickAdd}
-                            className="b:none color:#fff transition:0.2s ease opacity:0.5 font-weight:500 f:15px outline:none bg:blue r:5 ml:4px p:8|10">
+                            className="b:none color:#fff opacity:0.5 font-weight:500 f:15px outline:none bg:blue r:5 ml:4px p:8|10">
                             Add
                         </button> :
                         <button
